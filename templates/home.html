@@ -1,0 +1,60 @@
+{% extends 'navbar.html' %}
+
+{% block content %}
+
+{% load static %}
+
+<div class="row justify-content-center my-3">
+
+  <div class="col-5">
+
+  <img src="{% static 'portfol/pic.jpg' %}" height="170" width="420" class="img-fluid">
+
+</div>
+
+  </div>
+
+
+  <div class="row justify-content-center mb-3">
+
+    <div class="col-9 text-center">
+
+        <h1 <col span="font_weight-bold">This website is made my Me</h1>
+
+    </div>
+
+  </div>
+
+  <h2 class="mt-5">Projects</h2>
+
+
+
+
+    <div class="row">
+
+      {% for p in projects  %}
+
+      <div class="col-lg-4 col-md-6">
+
+        {% if p.url %}
+
+        <a href="{{p.url}}">
+          <img src="{{p.image.url}}" class="image-fluid mb-2" height="170" width="320">
+        </a>
+
+        {% else %}
+        <img src="{{p.image.url}}" class="image-fluid mb-2">
+
+        {% endif %}
+
+        <h3>{{p.title}}</h3>
+        <p>{{p.description}}</p>
+
+      </div>
+
+      {% endfor %}
+
+    </div>
+
+{% endblock %}
+

@@ -1,0 +1,25 @@
+{% extends 'navbar.html' %}
+
+{% block content %}
+
+    <h1 class="font-weight-bold text-center">Blog</h1>
+    <h3 class="text-center mb-5">Rinku has written {{blogs.count}} blog{{blogs.count|pluralize}}</h3>
+    {% for bl in blogs %}
+
+    <div class="row justify justify-content-center my-3">
+
+      <div class="col-md-10">
+
+        <a href="{% url 'blog:detail' bl.id %}"> <h1> {{bl.title}}</h1></a>
+
+        <h5>{{bl.date|date:'M d Y'}}</h5>
+
+        <h4>{{bl.description|striptags|truncatechars:100}}</h4>
+
+      </div>
+
+    </div>
+
+    {% endfor %}
+
+    {% endblock %}
